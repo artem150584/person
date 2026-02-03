@@ -15,6 +15,7 @@ public class PersonRq {
     @NotBlank(message = "name is required field")
     private String name;
 
+    @NotBlank(message = "name is required field")
     @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message = "use right email")
     private String email;
 }
