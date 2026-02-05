@@ -1,5 +1,7 @@
-package com.study;
+package com.study.controller;
 
+import com.study.dto.PersonRq;
+import com.study.dto.PersonRs;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,21 +22,21 @@ import java.util.UUID;
 public interface PersonController {
 
     @PostMapping("/create")
-    Person createPerson(@RequestBody @Valid Person person);
+    PersonRs createPerson(@RequestBody @Valid PersonRq person);
 
     @GetMapping("/get/{personId}")
-    Person getPerson(@PathVariable("personId") UUID personId);
+    PersonRs getPerson(@PathVariable("personId") UUID personId);
 
     @GetMapping("/get")
-    Person getByParamPerson(@RequestParam UUID personId);
+    PersonRs getByParamPerson(@RequestParam UUID personId);
 
     @PutMapping("/update/{personId}")
-    Person updatePerson(@RequestBody Person person, @PathVariable("personId") UUID personId);
+    PersonRs updatePerson(@RequestBody PersonRq person, @PathVariable("personId") UUID personId);
 
     @PatchMapping("/update/fields/{personId}")
-    Person patchPerson(@RequestBody Person person, @PathVariable("personId") UUID personID);
+    PersonRs patchPerson(@RequestBody PersonRq person, @PathVariable("personId") UUID personID);
 
     @DeleteMapping("/delete/{personId}")
-    Person deletePerson(@PathVariable("personId") UUID personId);
+    PersonRs deletePerson(@PathVariable("personId") UUID personId);
 
 }
