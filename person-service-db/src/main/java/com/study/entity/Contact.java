@@ -1,32 +1,37 @@
 package com.study.entity;
 
+import com.study.constants.DocumentType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Entity
-@Table(name = "person")
+@Table(name = "contact")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Person {
+public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "contact_value")
+    private String contactValue;
 
-    @Column(name = "email")
-    private String email;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id")
+    private Person person;
 }

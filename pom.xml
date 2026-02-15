@@ -14,9 +14,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>person-service-api</module>
         <module>person-service-db</module>
         <module>person-service-impl</module>
+        <module>person-service-api</module>
     </modules>
 
     <properties>

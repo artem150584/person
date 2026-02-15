@@ -26,13 +26,20 @@
         <dependency>
             <groupId>com.study</groupId>
             <artifactId>person-service-api</artifactId>
-            <version>${project.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.study</groupId>
             <artifactId>person-service-db</artifactId>
-            <version>${project.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
