@@ -18,10 +18,6 @@ public class PersonControllerImpl implements PersonController {
         return null;
     }
 
-    @Override
-    public PersonRs getPersonList() {
-        return null;
-    }
 
     private final PersonService personService;
 
@@ -39,7 +35,7 @@ public class PersonControllerImpl implements PersonController {
         person.setName(personRq.getName());
         person.setLastName(personRq.getLastName());
         person.setPatronymicName(personRq.getPatronymicName());
-//        TODO как в Rq/Rs узанть структуру классов???
+//        TODO как в Rq/Rs узнать структуру классов???
 //        person.setAddresses(personRq.getAddresses());
 //        person.setContacts(personRq.getContacts());
 //        person.setIdentityDocuments(personRq.getIdentityDocuments());

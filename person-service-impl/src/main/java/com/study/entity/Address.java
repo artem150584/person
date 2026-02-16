@@ -14,6 +14,7 @@ import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "address")
@@ -22,9 +23,10 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Address {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue
+    private UUID id;
 
     @Column(name = "zip_code")
     private String zipCode;

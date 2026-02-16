@@ -27,9 +27,6 @@ public interface PersonController {
     @GetMapping("/get/{personId}")
     PersonRs getPerson(@PathVariable("personId") UUID personId);
 
-    @GetMapping("/get/list-person")
-    PersonRs getPersonList();
-
     @GetMapping("/verify")
     PersonRs validatePersonAndPassport(@RequestParam String name, @RequestParam String passport);
 

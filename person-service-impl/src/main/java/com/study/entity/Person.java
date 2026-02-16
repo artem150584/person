@@ -25,6 +25,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Person {
+
     @Id
     @GeneratedValue
     private UUID id;

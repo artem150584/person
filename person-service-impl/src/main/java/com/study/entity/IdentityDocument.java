@@ -15,14 +15,17 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "identity_document")
 @Getter
 @Setter
 public class IdentityDocument {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private UUID id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
