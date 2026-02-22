@@ -1,12 +1,11 @@
 package com.study.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,17 +17,13 @@ public class PersonRq {
 
     private UUID id;
 
-    @NotBlank(message = "name is required field")
-    private String name;
+    private PersonDto person;
 
-    @NotBlank(message = "name is required field")
-    private String lastName;
+    private Set<AddressDto> address;
 
-    private String patronymicName;
+    private Set<ContactDto> contact;
 
-    private Set<String> addresses = new HashSet<>();
+    private boolean isVisible = true;
 
-    private Set<String> contacts = new HashSet<>();
-
-    private Set<String> identityDocuments = new HashSet<>();
+    private Set<IdentityDocumentDto> identityDocuments;
 }

@@ -1,11 +1,12 @@
 package com.study.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -13,13 +14,16 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class PersonRs {
-    private UUID id;
-    private String name;
-    private String lastName;
-    private String patronymicName;
-    private Set<String> contacts = new HashSet<>();
-    private Set<String> addresses = new HashSet<>();
-    private Set<String> identity_documents = new HashSet<>();
 
+    private UUID id;
+
+    private PersonDto person;
+
+    private Set<AddressDto> address;
+
+    private Set<ContactDto> contact;
+
+    private Set<IdentityDocumentDto> identityDocuments;
 }

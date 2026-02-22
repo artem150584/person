@@ -1,5 +1,4 @@
 databaseChangeLog:
   - include:
       file: v1/001-initial-schema.sql
-  - include:
-      file: v1/002_create_table_entity_tables.sql
+

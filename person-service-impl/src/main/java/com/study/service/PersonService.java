@@ -1,28 +1,25 @@
 package com.study.service;
 
-import com.study.entity.Address;
-import com.study.entity.Person;
-import com.study.repository.AddressRepository;
-import com.study.repository.PersonRepository;
-import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import com.study.dto.PersonRq;
+import com.study.dto.PersonRs;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.UUID;
 
-@Service
-@RequiredArgsConstructor
-public class PersonService {
-    private final PersonRepository personRepository;
-    private final AddressRepository addressRepository;
+public interface PersonService {
+    PersonRs getPersonById(UUID id);
 
-    public Person getPersonById(UUID id) {
-        return personRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Персона с ID " + id + " не найден"));
-    }
+    PersonRs save(PersonRq person);
 
-    public Person save(Person person) {
-        return personRepository.save(person);
-    }
+    boolean getPersonByFullNameAndDocument(String firstName,
+                                           String middleName,
+                                           String lastName,
+                                           String documentType,
+                                           String series);
+
+    PersonRs updatePerson(UUID personId, PersonRq person);
+
+    Page<PersonRs> getPersonList(Pageable pageable);
 }
 
