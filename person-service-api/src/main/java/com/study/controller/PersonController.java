@@ -41,10 +41,10 @@ public interface PersonController {
     PersonRs getByParamPerson(@RequestParam UUID personId);
 
     @GetMapping("/list")
-    Page<PersonRs> getPersons(@PageableDefault(size = 10, sort = "lastName") Pageable pageable);
+    Page<PersonRs> getPersons(@PageableDefault(sort = "lastName") Pageable pageable);
 
     @PutMapping("/update/{personId}")
-    PersonRs updatePerson(@RequestBody PersonRq person, @PathVariable("personId") UUID personId);
+    PersonRs updatePerson(@RequestBody @Valid PersonRq person, @PathVariable("personId") UUID personId);
 
     @PatchMapping("/update/fields/{personId}")
     PersonRs patchPerson(@RequestBody PersonRq person, @PathVariable("personId") UUID personID);

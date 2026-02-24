@@ -44,7 +44,4 @@ public class Address {
 
     @Column(name = "flat")
     private Integer flat;
-
-    @ManyToMany(mappedBy = "addresses")
-    private Set<Person> persons = new HashSet<>();
 }

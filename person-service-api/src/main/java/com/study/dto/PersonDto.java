@@ -25,5 +25,8 @@ public class PersonDto {
 
     private String middleName;
 
+    @NotBlank(message = "age is required field")
+    private Integer age;
+
     private boolean visible;
 }

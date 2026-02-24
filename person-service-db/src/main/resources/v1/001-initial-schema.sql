@@ -5,23 +5,32 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 CREATE TABLE person
 (
-    id                UUID PRIMARY KEY DEFAULT gen_random_uuid(), -- Уникальный идентификатор
-    first_name        VARCHAR(50) NOT NULL,                        -- Имя
-    middle_name       VARCHAR(50) NOT NULL,                        -- Отчество
-    last_name         VARCHAR(50) NOT NULL,                        -- Фамилия
-    identity_document VARCHAR(50),                                 -- Информационное поле о документе
-    contact           VARCHAR(50),                                 -- Информационное поле о контактах
-    person_address    VARCHAR(50),                                 -- Информационное поле об адресе
-    visible           BOOLEAN          DEFAULT true                -- Флаг для мягкого удаления (видимость)
+    id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    first_name        VARCHAR(50) NOT NULL,
+    middle_name       VARCHAR(50) NOT NULL,
+    last_name         VARCHAR(50) NOT NULL,
+    age               INTEGER NOT NULL,
+    identity_document VARCHAR(50),
+    contact           VARCHAR(50),
+    person_address    VARCHAR(50),
+    visible           BOOLEAN DEFAULT true
 );
+
+-- Комментарии к колонкам таблицы person
+COMMENT ON COLUMN person.id IS 'Уникальный идентификатор гражданина';
+COMMENT ON COLUMN person.first_name IS 'Имя';
+COMMENT ON COLUMN person.middle_name IS 'Отчество';
+COMMENT ON COLUMN person.age IS 'Возраст';
+COMMENT ON COLUMN person.last_name IS 'Фамилия';
+COMMENT ON COLUMN person.visible IS 'Флаг видимости (логическое удаление)';
 
 
 CREATE TABLE identity_document
 (
     id        UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    type      VARCHAR(50) NOT NULL, -- Тип (Enum в Java)
-    series    VARCHAR(20) NOT NULL, -- Серия и номер
-    person_id UUID        NOT NULL, -- Ссылка на владельца
+    type      VARCHAR(50) NOT NULL,
+    series    VARCHAR(20) NOT NULL,
+    person_id UUID NOT NULL,
 
     CONSTRAINT fk_identity_document_person
         FOREIGN KEY (person_id)
@@ -29,13 +38,17 @@ CREATE TABLE identity_document
             ON DELETE CASCADE
 );
 
+-- Комментарии к колонкам таблицы identity_document
+COMMENT ON COLUMN identity_document.type IS 'Тип документа (например, PASSPORT_RU)';
+COMMENT ON COLUMN identity_document.series IS 'Серия и номер документа';
+
 
 CREATE TABLE contact
 (
     id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    phone_number VARCHAR(20), -- Номер телефона
-    email        VARCHAR(50), -- Электронная почта
-    person_id    UUID        NOT NULL,
+    phone_number VARCHAR(20),
+    email        VARCHAR(50),
+    person_id    UUID NOT NULL,
 
     CONSTRAINT fk_contact_person
         FOREIGN KEY (person_id)
@@ -43,16 +56,28 @@ CREATE TABLE contact
             ON DELETE CASCADE
 );
 
+-- Комментарии к колонкам таблицы contact
+COMMENT ON COLUMN contact.phone_number IS 'Номер телефона';
+COMMENT ON COLUMN contact.email IS 'Адрес электронной почты';
+
 
 CREATE TABLE address
 (
     id       UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    zip_code VARCHAR(20),      -- Почтовый индекс
-    city     VARCHAR(100) NOT NULL, -- Город
-    street   VARCHAR(255) NOT NULL, -- Улица
-    home     INTEGER      NOT NULL, -- Дом
-    flat     INTEGER                -- Квартира
+    zip_code VARCHAR(20),
+    city     VARCHAR(100) NOT NULL,
+    street   VARCHAR(255) NOT NULL,
+    home     INTEGER NOT NULL,
+    flat     INTEGER
 );
+
+-- Комментарии к колонкам таблицы address
+COMMENT ON COLUMN address.zip_code IS 'Почтовый индекс';
+COMMENT ON COLUMN address.city IS 'Город проживания';
+COMMENT ON COLUMN address.street IS 'Улица';
+COMMENT ON COLUMN address.home IS 'Дом';
+COMMENT ON COLUMN address.flat IS 'Квартира';
+
 
 CREATE TABLE person_address
 (

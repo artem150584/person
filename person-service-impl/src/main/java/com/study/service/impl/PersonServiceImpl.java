@@ -2,15 +2,8 @@ package com.study.service.impl;
 
 import com.study.constants.DocumentType;
 import com.study.converter.DtoConverter;
-import com.study.dto.AddressDto;
-import com.study.dto.ContactDto;
-import com.study.dto.IdentityDocumentDto;
-import com.study.dto.PersonDto;
 import com.study.dto.PersonRq;
 import com.study.dto.PersonRs;
-import com.study.entity.Address;
-import com.study.entity.Contact;
-import com.study.entity.IdentityDocument;
 import com.study.entity.Person;
 import com.study.repository.ContactRepository;
 import com.study.repository.IdentityDocumentRepository;
@@ -22,10 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import static com.study.converter.DtoConverter.getPersonFromRq;
 import static com.study.converter.DtoConverter.mapToPersonRs;

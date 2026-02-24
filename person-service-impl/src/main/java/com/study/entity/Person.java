@@ -43,6 +43,9 @@ public class Person {
     @Column(name = "middle_name")
     private String middleName;
 
+    @Column(name = "age")
+    private Integer age;
+
     @Builder.Default
     private boolean visible = true;
 
