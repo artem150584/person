@@ -1,6 +1,6 @@
 package com.study.service.impl;
 
-import com.study.constants.DocumentType;
+import com.study.enums.DocumentType;
 import com.study.converter.DtoConverter;
 import com.study.dto.PersonRq;
 import com.study.dto.PersonRs;

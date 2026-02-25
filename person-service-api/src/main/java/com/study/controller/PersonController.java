@@ -31,11 +31,11 @@ public interface PersonController {
     PersonRs getPerson(@PathVariable("personId") UUID personId);
 
     @GetMapping("/verify")
-    boolean validatePersonAndPassport(@RequestParam String firstName
-            ,@RequestParam String middleName
-            ,@RequestParam String lastName
-            ,@RequestParam String documentType
-            ,@RequestParam String series);
+    boolean validatePersonAndPassport(@RequestParam String firstName,
+                                      @RequestParam String middleName,
+                                      @RequestParam String lastName,
+                                      @RequestParam String documentType,
+                                      @RequestParam String series);
 
     @GetMapping("/get")
     PersonRs getByParamPerson(@RequestParam UUID personId);
@@ -47,7 +47,7 @@ public interface PersonController {
     PersonRs updatePerson(@RequestBody @Valid PersonRq person, @PathVariable("personId") UUID personId);
 
     @PatchMapping("/update/fields/{personId}")
-    PersonRs patchPerson(@RequestBody PersonRq person, @PathVariable("personId") UUID personID);
+    PersonRs patchPerson(@RequestBody @Valid PersonRq person, @PathVariable("personId") UUID personID);
 
     @DeleteMapping("/delete/{personId}")
     PersonRs deletePerson(@PathVariable("personId") UUID personId);

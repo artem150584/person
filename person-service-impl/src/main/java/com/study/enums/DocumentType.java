@@ -1,4 +1,4 @@
-package com.study.constants;
+package com.study.enums;
 
 public enum DocumentType {
     PASSPORT_RU,

@@ -1,6 +1,6 @@
 package com.study.converter;
 
-import com.study.constants.DocumentType;
+import com.study.enums.DocumentType;
 import com.study.dto.AddressDto;
 import com.study.dto.ContactDto;
 import com.study.dto.IdentityDocumentDto;

@@ -1,6 +1,6 @@
 package com.study.entity;
 
-import com.study.constants.DocumentType;
+import com.study.enums.DocumentType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
