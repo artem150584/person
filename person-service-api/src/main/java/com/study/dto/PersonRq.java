@@ -1,21 +1,29 @@
 package com.study.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class PersonRq {
-    @NotBlank(message = "name is required field")
-    private String name;
 
-    @NotBlank(message = "name is required field")
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message = "use right email")
-    private String email;
+    private UUID id;
+
+    private PersonDto person;
+
+    private Set<AddressDto> address;
+
+    private Set<ContactDto> contact;
+
+    private boolean isVisible = true;
+
+    private Set<IdentityDocumentDto> identityDocuments;
 }

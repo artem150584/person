@@ -1,3 +1,4 @@
 databaseChangeLog:
   - include:
       file: v1/001-initial-schema.sql
+
