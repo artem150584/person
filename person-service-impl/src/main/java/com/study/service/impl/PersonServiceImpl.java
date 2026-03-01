@@ -1,15 +1,15 @@
 package com.study.service.impl;
 
-import com.study.enums.DocumentType;
 import com.study.converter.DtoConverter;
 import com.study.dto.PersonRq;
 import com.study.dto.PersonRs;
 import com.study.entity.Person;
+import com.study.enums.DocumentType;
+import com.study.exception.NotFoundCrmException;
 import com.study.repository.ContactRepository;
 import com.study.repository.IdentityDocumentRepository;
 import com.study.repository.PersonRepository;
 import com.study.service.PersonService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,7 +31,7 @@ public class PersonServiceImpl implements PersonService {
     public PersonRs getPersonById(UUID id) {
 
         Person person = personRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Персона с ID " + id + " не найден"));
+                .orElseThrow(() -> new NotFoundCrmException(id));
 
         return mapToPersonRs(person);
     }
@@ -63,7 +63,7 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public PersonRs updatePerson(UUID personId, PersonRq person) {
         Person existingPerson = personRepository.findById(personId)
-                .orElseThrow(() -> new EntityNotFoundException("Person not found"));
+                .orElseThrow(() -> new NotFoundCrmException(personId));
 
         Person updatedPerson = existingPerson.toBuilder()
                 .firstName(person.getPerson().getFirstName())
