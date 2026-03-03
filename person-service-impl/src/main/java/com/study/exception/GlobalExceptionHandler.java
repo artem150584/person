@@ -9,6 +9,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import java.util.Map;
 
+import static com.study.constants.ExceptionMessages.INVALID_ID_FORMAT;
+
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -26,6 +28,6 @@ public class GlobalExceptionHandler {
     public Map<String, String> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
         log.warn("Wrong UUID format {}", ex.getMessage());
 
-        return Map.of("error", "Неверный формат идентификатора: " + ex.getValue());
+        return Map.of("error", INVALID_ID_FORMAT + ex.getValue());
     }
 }

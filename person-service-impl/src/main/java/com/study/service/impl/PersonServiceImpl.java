@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+import static com.study.constants.ExceptionMessages.PERSON_NOT_FOUND;
 import static com.study.converter.DtoConverter.getPersonFromRq;
 import static com.study.converter.DtoConverter.mapToPersonRs;
 
@@ -31,7 +32,7 @@ public class PersonServiceImpl implements PersonService {
     public PersonRs getPersonById(UUID id) {
 
         Person person = personRepository.findById(id)
-                .orElseThrow(() -> new NotFoundCrmException(id));
+                .orElseThrow(() -> new NotFoundCrmException(String.format(PERSON_NOT_FOUND, id)));
 
         return mapToPersonRs(person);
     }
@@ -61,9 +62,9 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public PersonRs updatePerson(UUID personId, PersonRq person) {
-        Person existingPerson = personRepository.findById(personId)
-                .orElseThrow(() -> new NotFoundCrmException(personId));
+    public PersonRs updatePerson(UUID id, PersonRq person) {
+        Person existingPerson = personRepository.findById(id)
+                .orElseThrow(() -> new NotFoundCrmException(String.format(PERSON_NOT_FOUND, id)));
 
         Person updatedPerson = existingPerson.toBuilder()
                 .firstName(person.getPerson().getFirstName())
