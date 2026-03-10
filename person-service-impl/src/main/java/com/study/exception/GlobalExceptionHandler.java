@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NotFoundCrmException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleNotFound(NotFoundCrmException ex) {
-        log.warn("Person not found: {}", ex.getMessage());
+        log.error("Person not found: {}", ex.getMessage());
 
         return Map.of("error", ex.getMessage());
     }
@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
-        log.warn("Wrong UUID format {}", ex.getMessage());
+        log.error("Wrong UUID format {}", ex.getMessage());
 
         return Map.of("error", INVALID_ID_FORMAT + ex.getValue());
     }
