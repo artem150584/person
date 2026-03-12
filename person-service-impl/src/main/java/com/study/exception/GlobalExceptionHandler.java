@@ -2,7 +2,6 @@ package com.study.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -13,13 +12,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NotFoundCrmException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<ExceptionMessageDto> handleNotFound(NotFoundCrmException ex) {
+    public ExceptionMessageDto handleNotFound(NotFoundCrmException ex) {
         log.error("Person not found: {}", ex.getMessage());
 
         ExceptionMessageDto data = new ExceptionMessageDto();
         data.setMessage(ex.getMessage());
         data.setStatus(HttpStatus.NOT_FOUND);
 
-        return new ResponseEntity<>(data, HttpStatus.NOT_FOUND);
+        return data;
     }
 }
