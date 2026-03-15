@@ -20,9 +20,9 @@ public class PersonRs {
 
     private PersonDto person;
 
-    private Set<AddressDto> address;
+    private Set<AddressDto> addresses;
 
-    private Set<ContactDto> contact;
+    private Set<ContactDto> contacts;
 
     private Set<IdentityDocumentDto> identityDocuments;
 }
