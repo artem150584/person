@@ -1,13 +1,11 @@
 package com.study.service.impl;
 
-import com.study.converter.DtoConverter;
+import com.study.converter.PersonMapper;
 import com.study.dto.PersonRq;
 import com.study.dto.PersonRs;
 import com.study.entity.Person;
 import com.study.enums.DocumentType;
 import com.study.exception.NotFoundCrmException;
-import com.study.repository.ContactRepository;
-import com.study.repository.IdentityDocumentRepository;
 import com.study.repository.PersonRepository;
 import com.study.service.PersonService;
 import lombok.RequiredArgsConstructor;
@@ -18,15 +16,14 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 import static com.study.constants.ExceptionMessages.PERSON_NOT_FOUND;
-import static com.study.converter.DtoConverter.getPersonFromRq;
-import static com.study.converter.DtoConverter.mapToPersonRs;
 
 @Service
 @RequiredArgsConstructor
 public class PersonServiceImpl implements PersonService {
+
     private final PersonRepository personRepository;
-    private final ContactRepository contactRepository;
-    private final IdentityDocumentRepository identityDocumentRepository;
+
+    private final PersonMapper personMapper;
 
     @Override
     public PersonRs getPersonById(UUID id) {
@@ -34,17 +31,14 @@ public class PersonServiceImpl implements PersonService {
         Person person = personRepository.findById(id)
                 .orElseThrow(() -> new NotFoundCrmException(String.format(PERSON_NOT_FOUND, id)));
 
-        return mapToPersonRs(person);
+        return personMapper.toPersonRs(person);
     }
 
     @Override
     public PersonRs save(PersonRq personRq) {
-        Person person = getPersonFromRq(personRq);
+        Person person = personMapper.toPerson(personRq);
 
-        Person personSaved = personRepository.save(person);
-        contactRepository.saveAll(personSaved.getContacts());
-        identityDocumentRepository.saveAll(personSaved.getIdentityDocuments());
-        return mapToPersonRs(personSaved);
+        return personMapper.toPersonRs(personRepository.save(person));
     }
 
     @Override
@@ -62,26 +56,18 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public PersonRs updatePerson(UUID id, PersonRq person) {
+    public PersonRs updatePerson(UUID id, PersonRq personRq) {
         Person existingPerson = personRepository.findById(id)
                 .orElseThrow(() -> new NotFoundCrmException(String.format(PERSON_NOT_FOUND, id)));
 
-        Person updatedPerson = existingPerson.toBuilder()
-                .firstName(person.getPerson().getFirstName())
-                .lastName(person.getPerson().getLastName())
-                .middleName(person.getPerson().getMiddleName())
-                .visible(person.getPerson().isVisible())
-                .build();
+        personMapper.updatePerson(personRq, existingPerson);
 
-        Person saved = personRepository.save(updatedPerson);
-
-        return mapToPersonRs(saved);
+        return personMapper.toPersonRs(personRepository.save(existingPerson));
     }
 
     public Page<PersonRs> getPersonList(Pageable pageable) {
-        Page<Person> personPage = personRepository.findAllByVisibleTrue(pageable);
-
-        return personPage.map(DtoConverter::mapToPersonRs);
+        return personRepository.findAllByVisibleTrue(pageable)
+                .map(personMapper::toPersonRs);
     }
 }
 

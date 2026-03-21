@@ -1,6 +1,5 @@
 package com.study.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +18,9 @@ public class PersonRq {
 
     private PersonDto person;
 
-    private Set<AddressDto> address;
+    private Set<AddressDto> addresses;
 
-    private Set<ContactDto> contact;
+    private Set<ContactDto> contacts;
 
     private boolean isVisible = true;
 

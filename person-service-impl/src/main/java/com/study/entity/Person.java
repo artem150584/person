@@ -49,11 +49,11 @@ public class Person {
     @Builder.Default
     private boolean visible = true;
 
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     @Column(name = "identity_documents")
     private Set<IdentityDocument> identityDocuments = new HashSet<>();
 
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     @Column(name = "contact")
     private Set<Contact> contacts = new HashSet<>();
 
