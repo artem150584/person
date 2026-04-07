@@ -68,6 +68,6 @@ public class Person {
     private Set<Address> addresses = new HashSet<>();
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "series", referencedColumnName = "series")
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private Credential credential;
 }
