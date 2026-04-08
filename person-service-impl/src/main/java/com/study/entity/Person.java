@@ -67,7 +67,7 @@ public class Person {
     )
     private Set<Address> addresses = new HashSet<>();
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id", referencedColumnName = "id")
     private Credential credential;
 }
