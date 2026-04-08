@@ -1,4 +1,5 @@
 databaseChangeLog:
   - include:
       file: v1/001-initial-schema.sql
-
+  - include:
+      file: v1/20260404_create_table_credential.sql
