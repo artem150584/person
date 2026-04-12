@@ -76,11 +76,6 @@
             <version>4.1.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.study</groupId>
-            <artifactId>auth-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
 
     </dependencies>

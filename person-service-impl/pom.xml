@@ -58,7 +58,7 @@
 
         <dependency>
             <groupId>com.study</groupId>
-            <artifactId>auth-service</artifactId>
+            <artifactId>auth-service-impl</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
