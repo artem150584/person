@@ -30,6 +30,8 @@
         <embedded.database>2.5.1</embedded.database>
         <embedded.postgres>2.2.2</embedded.postgres>
         <spring.cloud.contract.wiremock>4.3.0</spring.cloud.contract.wiremock>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
+        <commons-compress.version>1.26.1</commons-compress.version>
     </properties>
 
     <dependencyManagement>
@@ -50,6 +52,17 @@
                 <artifactId>embedded-database-spring-test</artifactId>
                 <version>${embedded.database}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons-compress.version}</version>
             </dependency>
 
             <dependency>
@@ -120,10 +133,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <version>4.1.0</version>
-            <scope>compile</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>

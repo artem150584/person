@@ -1,21 +1,23 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: Password123
     driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false # Это заставит Hibernate использовать диалект из конфига, не опрашивая БД
 
   liquibase:
     enabled: true
     change-log: classpath:db.changelog-master.yaml
-    default-schema: public
-
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
 
 zonky:
   test:
     database:
-      provider: zonky
+      replace: any
+      prefetching:
+        enabled: false

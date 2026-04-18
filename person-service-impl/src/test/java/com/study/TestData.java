@@ -21,8 +21,6 @@ public class TestData {
     @SneakyThrows
     public static PersonRq getPersonRq() {
 
-
         return deserialize(PERSON_RQ , PersonRq.class);
     }
-
 }
