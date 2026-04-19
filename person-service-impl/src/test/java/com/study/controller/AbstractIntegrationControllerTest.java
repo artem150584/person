@@ -23,6 +23,6 @@ abstract class AbstractIntegrationControllerTest {
     @BeforeEach
     public void setup() {
         RestAssured.port = port;
-        RestAssured.baseURI = "http://localhost/v1/public/person";
+        RestAssured.baseURI = "http://localhost";
     }
 }

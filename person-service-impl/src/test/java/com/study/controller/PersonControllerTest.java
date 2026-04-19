@@ -7,6 +7,7 @@ import com.study.dto.PersonRq;
 import com.study.dto.PersonRs;
 import com.study.repository.PersonRepository;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,7 @@ import static com.study.TestData.getPersonRq;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("Контроллер взаимодействия Person")
 public class PersonControllerTest extends AbstractIntegrationControllerTest{
 
     @SpyBean
@@ -24,6 +26,7 @@ public class PersonControllerTest extends AbstractIntegrationControllerTest{
 
 
     @Test
+    @DisplayName("Создание Person")
     @Transactional
     public void createPerson() {
 
@@ -34,7 +37,7 @@ public class PersonControllerTest extends AbstractIntegrationControllerTest{
                 .contentType(ContentType.JSON)
                 .body(getPersonRq())
                 .when()
-                .post("/create")
+                .post("/v1/public/person/create")
                 .then()
                 .statusCode(200)
                 .extract()
