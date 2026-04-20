@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.study.TestData.getUserInfoDto;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,6 +15,8 @@ public class UserInfoControllerTest extends AbstractIntegrationControllerTest {
     @Test
     @DisplayName("Получение UserInfo")
     public void getUserInfo() {
+
+        UserInfoDto expectedRs = getUserInfoDto();
 
         var response = given()
                 .header("Content-Type", "application/json")
@@ -25,9 +28,9 @@ public class UserInfoControllerTest extends AbstractIntegrationControllerTest {
                 .extract()
                 .as(UserInfoDto.class);
 
-        assertEquals("Clementina DuBuque", response.getName(), "Name is incorrect");
-        assertEquals("Moriah.Stanton", response.getUsername(), "Username is incorrect");
-        assertEquals("Rey.Padberg@karina.biz", response.getEmail(), "Email is incorrect");
-        assertEquals("024-648-3804", response.getPhone(), "Phone number is incorrect");
+        assertEquals(expectedRs.getName(), response.getName(), "Name is incorrect");
+        assertEquals(expectedRs.getUsername(), response.getUsername(), "Username is incorrect");
+        assertEquals(expectedRs.getEmail(), response.getEmail(), "Email is incorrect");
+        assertEquals(expectedRs.getPhone(), response.getPhone(), "Phone number is incorrect");
     }
 }
