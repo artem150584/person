@@ -1,0 +1,30 @@
+{
+  "person": {
+    "firstName": "ТесттТТТQЙ",
+    "lastName": "Тестовв",
+    "middleName": "Тестовичч",
+    "age": 99
+  },
+  "contacts": [
+    {
+      "phoneNumber":"+1242342342",
+      "email": "email.email.com"
+    }
+  ],
+  "addresses": [
+    {
+      "zipCode": "000",
+      "city": "Mexico",
+      "street": "Mexico",
+      "home": 10,
+      "flat": 5
+
+    }
+  ],
+  "identityDocuments": [
+    {
+      "type": "PASSPORT_RU",
+      "series": "11111111"
+    }
+  ]
+}

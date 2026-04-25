@@ -26,8 +26,8 @@ public interface PersonMapper {
 
     @Mapping(target = ".", source = "personRq.person")
     @Mapping(target = "firstName", expression = "java(personRq.getPerson().getFirstName().toUpperCase())")
-    @Mapping(target = "lastName", expression = "java(personRq.getPerson().getFirstName().toUpperCase())")
-    @Mapping(target = "middleName", expression = "java(personRq.getPerson().getFirstName().toUpperCase())")
+    @Mapping(target = "lastName", expression = "java(personRq.getPerson().getLastName().toUpperCase())")
+    @Mapping(target = "middleName", expression = "java(personRq.getPerson().getMiddleName().toUpperCase())")
     @Mapping(target = "addresses", source = "personRq.addresses")
     @Mapping(target = "contacts", source = "personRq.contacts")
     Person toPerson(PersonRq personRq);

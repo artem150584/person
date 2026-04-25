@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false # Это заставит Hibernate использовать диалект из конфига, не опрашивая БД
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db.changelog-master.yaml
+
+zonky:
+  test:
+    database:
+      replace: any
+      prefetching:
+        enabled: false

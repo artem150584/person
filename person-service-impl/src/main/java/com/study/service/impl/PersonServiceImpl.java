@@ -48,6 +48,10 @@ public class PersonServiceImpl implements PersonService {
             person.getIdentityDocuments().forEach(doc -> doc.setPerson(person));
         }
 
+        if (person.getContacts() != null) {
+            person.getContacts().forEach(contact -> contact.setPerson(person));
+        }
+
         String series = person.getIdentityDocuments().stream()
                 .findFirst()
                 .map(IdentityDocument::getSeries)
