@@ -1,0 +1,29 @@
+{
+  "id": "cbf6a554-f33b-4e88-be14-92e3a7336312",
+  "firstName": "ИВАН",
+  "lastName": "ИВАНОВ",
+  "middleName": "ПЕТРОВИЧ",
+  "age": 20,
+  "visible": true,
+  "addresses": [
+    {
+      "zipCode": "000",
+      "city": "Rio",
+      "street": "Brazil",
+      "home": 10,
+      "flat": 5
+    }
+  ],
+  "contacts": [
+    {
+      "phoneNumber": "+2342342",
+      "email": null
+    }
+  ],
+  "identityDocuments": [
+    {
+      "type": "PASSPORT_RU",
+      "series": "123123"
+    }
+  ]
+}

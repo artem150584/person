@@ -83,6 +83,12 @@
             <artifactId>auth-service-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+<!--            <version>5.23.0</version>-->
+        </dependency>
     </dependencies>
 
     <build>
