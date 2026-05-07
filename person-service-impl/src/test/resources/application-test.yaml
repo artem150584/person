@@ -21,3 +21,7 @@ zonky:
       replace: any
       prefetching:
         enabled: false
+
+person-properties:
+  user-info:
+    url: http://localhost:9092/users/{id}

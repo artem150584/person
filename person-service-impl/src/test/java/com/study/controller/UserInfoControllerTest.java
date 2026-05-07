@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.study.IntegrationMocks.mockGetUserInfo;
 import static com.study.TestData.getUserInfoDto;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,6 +16,8 @@ public class UserInfoControllerTest extends AbstractIntegrationControllerTest {
     @Test
     @DisplayName("Получение UserInfo")
     public void getUserInfo() {
+
+        mockGetUserInfo();
 
         UserInfoDto expectedRs = getUserInfoDto();
 
